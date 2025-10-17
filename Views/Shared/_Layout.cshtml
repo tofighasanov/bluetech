@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewData["Title"] - Bluetech</title>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+  <header>
+    <a href="/" class="brand">Bluetech</a>
+    <button id="navToggle" aria-label="Меню">☰</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/Home/About">О нас</a></li>
+        <li><a href="/Services">Услуги</a></li>
+        <li><a href="/Projects">Проекты</a></li>
+        <li><a href="/Home/Contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main role="main">
+    @RenderBody()
+  </main>
+
+  <footer>
+    <p>© @DateTime.Now.Year Bluetech.az • Информационные системы и внедрение</p>
+  </footer>
+
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<script defer src="~/js/site.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
+
+</body>
+</html>

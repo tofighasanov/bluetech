@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Bluetech.Models.Project>
+@{
+    ViewData["Title"] = "Проекты";
+}
+<h1>Реализованные проекты</h1>
+<div class="cards">
+@foreach (var p in Model)
+{
+    <article class="card">
+        <img src="@(p.ImagePath ?? "/img/placeholder.jpg")" alt="@p.Title" />
+        <div class="card-body">
+            <h3>@p.Title</h3>
+            <p class="muted">@p.Customer • @p.LaunchDate.ToString("yyyy-MM")</p>
+            <p>@p.ShortDescription</p>
+            <div class="tags">
+                @foreach (var t in p.Tags){ <span class="tag">@t</span> }
+            </div>
+            @if (!string.IsNullOrWhiteSpace(p.Link))
+            {
+                <a class="btn-primary" href="@p.Link">Подробнее</a>
+            }
+        </div>
+    </article>
+}
+</div>

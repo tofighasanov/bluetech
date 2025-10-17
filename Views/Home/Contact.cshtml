@@ -1,0 +1,44 @@
+﻿@model Bluetech.Models.ContactFormModel
+@{
+    ViewData["Title"] = "Контакты";
+}
+<h1>Связаться с Bluetech</h1>
+
+@if (TempData["ContactOk"] != null)
+{
+    <div class="alert success">@TempData["ContactOk"]</div>
+}
+
+<form asp-action="Contact" method="post" class="form">
+    @Html.AntiForgeryToken()
+    <div class="grid">
+        <label>Имя
+            <input asp-for="Name" />
+            <span class="err" asp-validation-for="Name"></span>
+        </label>
+        <label>Email
+            <input asp-for="Email" />
+            <span class="err" asp-validation-for="Email"></span>
+        </label>
+        <label>Телефон
+            <input asp-for="Phone" />
+            <span class="err" asp-validation-for="Phone"></span>
+        </label>
+    </div>
+
+    <label>Сообщение
+        <textarea asp-for="Message" rows="6"></textarea>
+        <span class="err" asp-validation-for="Message"></span>
+    </label>
+
+    <label>Сколько будет 3 + 4?
+        <input asp-for="Check" />
+        <span class="err" asp-validation-for="Check"></span>
+    </label>
+
+    <button class="btn-primary" type="submit">Отправить</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

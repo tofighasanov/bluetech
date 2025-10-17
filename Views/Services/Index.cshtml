@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Bluetech.Models.Service>
+
+<h2>Наши услуги</h2>
+<ul>
+@foreach (var service in Model)
+{
+    <li>
+        <h3>@service.Name</h3>
+        <p>@service.Description</p>
+    </li>
+}
+</ul>
