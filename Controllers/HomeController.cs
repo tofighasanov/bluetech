@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Bluetech.Models;
 
@@ -5,6 +6,8 @@ namespace Bluetech.Controllers
 {
     public class HomeController : Controller
     {
+        private const string V = "Спасибо! Мы свяжемся с вами по email.";
+
         public IActionResult Index() => View();
         public IActionResult About() => View();
         public IActionResult Contact() => View(new ContactFormModel());
@@ -13,8 +16,11 @@ namespace Bluetech.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactFormModel model)
         {
-            if (model.Check.Trim() != "7") // примитивная проверка "3+4"
-                ModelState.AddModelError(nameof(model.Check), "Ответ неверный.");
+            var answer = model.Check?.Trim();
+            if (!string.Equals(answer, "7", StringComparison.Ordinal)) // примитивная проверка "3+4"
+            {
+                ModelState.AddModelError(nameof(model.Check), "Ответ на проверочный вопрос неверный.");
+            }
 
             if (!ModelState.IsValid)
                 return View(model);
