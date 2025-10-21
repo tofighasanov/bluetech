@@ -1,0 +1,27 @@
+# build & runtime stuff
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# user/project configs
+*.user
+*.suo
+*.vs
+.vscode/
+.idea/
+
+# package / dependency locks
+*.lock.json
+*.log
+
+# backups & temp
+*.tmp
+*.bak
+*.old
+
+# generated web assets
+wwwroot/build/
+node_modules/
