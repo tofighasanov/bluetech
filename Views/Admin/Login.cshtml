@@ -1,0 +1,33 @@
+﻿@model Bluetech.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Вход в админ-панель";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Login" method="post" class="form">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="err"></div>
+
+    <label asp-for="Email">
+        <input asp-for="Email" autocomplete="email" />
+        <span class="err" asp-validation-for="Email"></span>
+    </label>
+
+    <label asp-for="Password">
+        <input asp-for="Password" autocomplete="current-password" />
+        <span class="err" asp-validation-for="Password"></span>
+    </label>
+
+    <label class="checkbox">
+        <input asp-for="RememberMe" />
+        @Html.DisplayNameFor(m => m.RememberMe)
+    </label>
+
+    <button class="btn-primary" type="submit">Войти</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

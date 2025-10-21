@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bluetech.Controllers
@@ -17,11 +19,16 @@ namespace Bluetech.Controllers
         {
             var email = "admin@bluetech.az";
             var exists = await _users.FindByEmailAsync(email);
-            if (exists != null) return Content("Admin already exists");
+            if (exists != null)
+            {
+                return Content("Admin already exists");
+            }
 
             var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
             var result = await _users.CreateAsync(user, "Admin123!");
-            return Content(result.Succeeded ? "Admin created" : string.Join("; ", result.Errors.Select(e => e.Description)));
+            return Content(result.Succeeded
+                ? "Admin created"
+                : string.Join("; ", result.Errors.Select(e => e.Description)));
         }
     }
 }
