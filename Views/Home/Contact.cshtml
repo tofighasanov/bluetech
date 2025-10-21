@@ -11,6 +11,7 @@
 
 <form asp-action="Contact" method="post" class="form">
     @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="err"></div>
     <div class="grid">
         <label>Имя
             <input asp-for="Name" />
@@ -31,10 +32,12 @@
         <span class="err" asp-validation-for="Message"></span>
     </label>
 
-    <label>Сколько будет 3 + 4?
-        <input asp-for="Check" />
+    <label>
+        <span class="captcha-question">@(!string.IsNullOrEmpty(Model?.CaptchaQuestion) ? Model.CaptchaQuestion : "Сколько будет 3 + 4?")</span>
+        <input asp-for="Check" inputmode="numeric" autocomplete="off" placeholder="Введите ответ" />
         <span class="err" asp-validation-for="Check"></span>
     </label>
+    <input type="hidden" asp-for="CaptchaToken" />
 
     <button class="btn-primary" type="submit">Отправить</button>
 </form>

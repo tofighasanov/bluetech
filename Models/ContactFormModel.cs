@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bluetech.Models
 {
@@ -16,8 +17,13 @@ namespace Bluetech.Models
         [Required, StringLength(2000, MinimumLength = 10)]
         public string Message { get; set; } = string.Empty;
 
-        // простая анти-бот проверка
+        // проверочный вопрос против спама
         [Required]
         public string Check { get; set; } = string.Empty;
+
+        public string CaptchaQuestion { get; set; } = string.Empty;
+
+        [HiddenInput]
+        public string CaptchaToken { get; set; } = string.Empty;
     }
 }

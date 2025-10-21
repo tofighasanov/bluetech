@@ -24,12 +24,14 @@ header {
     border-bottom: 1px solid var(--border-color);
 }
 
+
     header a {
         color: var(--accent);
         text-decoration: none;
         font-weight: bold;
         transition: var(--transition);
     }
+
 
         header a:hover {
             color: var(--accent-hover);
@@ -43,7 +45,9 @@ nav ul {
     padding: 0;
 }
 
-h1, h2, h3 {
+    h1, h2, h3
+
+{
     color: #fff;
 }
 
@@ -58,7 +62,6 @@ section {
         transform: translateY(0);
     }
 
-
 .btn-primary {
     display: inline-block;
     background: var(--accent);
@@ -68,6 +71,7 @@ section {
     text-decoration: none;
     transition: var(--transition);
 }
+
 
     .btn-primary:hover {
         background: var(--accent-hover);
@@ -81,7 +85,20 @@ footer {
     background-color: var(--card-bg);
 }
 
-input, textarea {
+    label
+
+{
+    display: block;
+}
+
+.captcha-question {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+input,
+textarea {
     width: 100%;
     background: #1d1d25;
     border: 1px solid var(--border-color);
@@ -106,12 +123,14 @@ button {
     }
 
 main {
-    max-width: 1100px; /* ограничиваем ширину контента */
-    margin: 0 auto; /* центрируем по горизонтали */
-    padding: 2rem 1rem; /* внутренние отступы */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
-header, footer {
+    header, footer
+
+{
     max-width: 1100px;
     margin: 0 auto;
     padding: 1rem 1.5rem;
